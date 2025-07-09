@@ -20,7 +20,7 @@ export function createUser(req, res) {
             });
         }
     }
-    //test 
+    
 
     // Hash the password
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
