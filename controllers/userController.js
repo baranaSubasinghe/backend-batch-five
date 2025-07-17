@@ -1,6 +1,8 @@
 import User  from '../models/user.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config()
 
 export function createUser(req, res) {
     // Check if the new user is being created as an admin
@@ -70,7 +72,7 @@ export function createUser(req, res) {
             role:user.role,
             img:user.image
 },
-"secretKey"
+process.env.JWT_KEY
 )
 
                 res.json({

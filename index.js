@@ -7,10 +7,11 @@ import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import reviewRouter from './routes/reviewRouter.js';
 import cors from 'cors';
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const app= express();
@@ -27,7 +28,8 @@ app.use((req,res,next)=>{
         const token = tokenString.replace("Bearer ","")
         //console.log(token);
 
-        jwt.verify(token,"secretKey",(err,decoded)=>{
+        jwt.verify(token,process.env.JWT_KEY ,
+            (err,decoded)=>{
             if(decoded!=null){
                 console.log(decoded)
                 req.user=decoded
